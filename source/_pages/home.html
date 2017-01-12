@@ -1,0 +1,20 @@
+---
+layout: default
+permalink: /
+classes: home
+---
+<!-- start /_pages/home.html -->
+
+<h1>Welcome to {{ site.title }}</h1>
+<p>{{ site.description }}</p>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+     {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
+
+<!-- end /_pages/home.html -->

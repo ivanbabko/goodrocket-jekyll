@@ -1,0 +1,29 @@
+# Site settings
+title:        "Goodrocket-Jekyll"
+description:  "Web development starting kit based on Jekyll and Gulp"
+
+
+# URL configuration
+url:          "" # the base hostname for the project, e.g. http://domain.com
+baseurl:      ""  # the subpath of the project, e.g. /blog
+permalink:    /:categories/:title/ # base url structure for posts
+
+
+# Using temp folders to help Gulp do its job.
+source:       .tmp/source 
+destination:  .tmp/build
+
+
+exclude:      ["assets"]
+include:      ["_pages"]
+
+
+# Markdown settings
+markdown:     kramdown
+
+
+# Plugins
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
