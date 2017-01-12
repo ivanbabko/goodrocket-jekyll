@@ -5,7 +5,7 @@ description:  "Web development starting kit based on Jekyll and Gulp"
 
 # URL configuration
 url:          "" # the base hostname for the project, e.g. http://domain.com
-baseurl:      ""  # the subpath of the project, e.g. /blog
+baseurl:      ""  # the subpath of the project in production, e.g. /blog
 permalink:    /:categories/:title/ # base url structure for posts
 
 
@@ -13,7 +13,7 @@ permalink:    /:categories/:title/ # base url structure for posts
 source:       .tmp/source 
 destination:  .tmp/build
 
-
+# Include/exclude settings
 exclude:      ["assets"]
 include:      ["_pages"]
 

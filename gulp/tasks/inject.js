@@ -5,7 +5,7 @@ var inject = require('gulp-inject');
 // include paths file
 var paths  = require('../paths');
 
-// 'gulp inject:css' -- injects index.css to default Jekyll layout in temp source folder
+// 'gulp inject:css' -- injects index.css to default layout in temp source folder
 gulp.task('inject:css', () =>
   gulp.src(paths.tempDir + paths.sourceDir + paths.layoutsFolderName + '/default.html')
     .pipe(inject(gulp.src(paths.sassFilesTemp + '/*.css'), {
@@ -14,13 +14,13 @@ gulp.task('inject:css', () =>
       },
       ignorePath: paths.tempFolderName,
       addRootSlash: false,
-      addPrefix: '{{ site.url }}',
+      addPrefix: '{{ site.url }}{{ site.baseurl }}',
       removeTags: true
     }))
     .pipe(gulp.dest(paths.tempDir + paths.sourceDir + paths.layoutsFolderName))
 );
 
-// 'gulp inject:scripts' -- injects index.js to default Jekyll layout in temp source folder
+// 'gulp inject:scripts' -- injects index.js to default layout in temp source folder
 gulp.task('inject:scripts', () =>
   gulp.src(paths.tempDir + paths.sourceDir + paths.layoutsFolderName + '/default.html')
     .pipe(inject(gulp.src(paths.jsFilesTemp + '/*.js'), {
@@ -29,7 +29,7 @@ gulp.task('inject:scripts', () =>
       },
       ignorePath: paths.tempFolderName,
       addRootSlash: false,
-      addPrefix: '{{ site.url }}',
+      addPrefix: '{{ site.url }}{{ site.baseurl }}',
       removeTags: true
     }))
     .pipe(gulp.dest(paths.tempDir + paths.sourceDir + paths.layoutsFolderName))

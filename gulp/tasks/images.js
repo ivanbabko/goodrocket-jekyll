@@ -33,6 +33,7 @@ gulp.task('images', () =>
 
 // feature image resize values
 var options = [
+  { width: 20, upscale: false },
   { width: 640, upscale: false },
   { width: 1280, upscale: false },
 ]
@@ -41,7 +42,8 @@ var options = [
 // https://gist.github.com/ddprrt/1b535c30374158837df89c0e7f65bcfc
 gulp.task('images:feature', function() {
   var streams = options.map(function(el) {
-    // resizing images
+    
+    // resizes images and put them to built assets directory
     return gulp.src([paths.imageFiles + '/feature' + paths.imagePattern, '!' + paths.imageFiles + '/feature/**/*.svg'])
       .pipe(rename(function(file) {
         if(file.extname) {
@@ -57,7 +59,7 @@ gulp.task('images:feature', function() {
       .pipe(gulp.dest(paths.imageFilesSite))
   });
 
-  // add original images
+  // adds original images to built assets directory
   streams.push(gulp.src(paths.imageFiles + '/feature' + paths.imagePattern)
     .pipe(newer(paths.imageFilesSite))
     .pipe(imagemin([
