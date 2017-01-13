@@ -1,6 +1,7 @@
 # Folders that shouldn't be tracked
 node_modules/
 build/
+source/assets/css/
 
 # Files that shouldn't be tracked
 *.sublime-project

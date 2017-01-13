@@ -4,14 +4,15 @@ description:  "Web development starting kit based on Jekyll and Gulp"
 
 
 # URL configuration
-url:          "" # the base hostname for the project, e.g. http://domain.com
+url:          "http://domain.com" # the base hostname for the project, e.g. http://domain.com
 baseurl:      ""  # the subpath of the project in production, e.g. /blog
 permalink:    /:categories/:title/ # base url structure for posts
 
 
 # Using temp folders to help Gulp do its job.
-source:       .tmp/source 
+source:       .tmp/source
 destination:  .tmp/build
+
 
 # Include/exclude settings
 exclude:      ["assets"]

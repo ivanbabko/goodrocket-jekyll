@@ -6,14 +6,14 @@ var tasks      = requireDir('./gulp/tasks', {recurse: true}); // eslint-disable-
 // include paths file
 var paths      = require('./gulp/paths');
 
-// 'gulp inject' -- injects CSS and JS into temporary source directory 
+// 'gulp inject' -- injects CSS and JS into temporary source directory
 gulp.task('inject', gulp.series('inject:css', 'inject:scripts'));
 
-// 'gulp generator' -- copies original source to a temporary source (ignores assets), 
-// injects styles and scripts into this temporary source, generates site and outputs it 
-// to temporary build directory, copies generated site from temporary build directory 
+// 'gulp generate' -- copies original source to a temporary source (ignores assets),
+// injects styles and scripts into this temporary source, generates site and outputs it
+// to temporary build directory, copies generated site from temporary build directory
 // to the actual build directory.
-gulp.task('generator', gulp.series('copy:tmp', 'inject', 'site', 'copy:site'));
+gulp.task('generate', gulp.series('copy:tmp', 'inject', 'site', 'copy:site'));
 
 // 'gulp assets' -- builds CSS, JS, creates SVG sprite, copies fonts, optimizes
 // images, and copies assets folder to the actual build folder
@@ -23,8 +23,8 @@ gulp.task('assets', gulp.series(
   gulp.series('images', 'images:feature', 'copy:assets')
 ));
 
-// 'gulp clean' -- removes temporary and built CSS/JS assets, deletes built site, 
-// removes temporary source. NOTE: Does not delete images from built site to reduce 
+// 'gulp clean' -- removes temporary and built CSS/JS assets, deletes built site,
+// removes temporary source. NOTE: Does not delete images from built site to reduce
 // the build time due to image optimizations.
 gulp.task('clean', gulp.parallel('clean:assets', 'clean:site', 'clean:tmp'));
 
@@ -34,7 +34,7 @@ gulp.task('wipe', gulp.series('clean', 'clean:images'));
 
 // 'gulp build' -- same as 'gulp' but doesn't serve site
 // 'gulp build --prod' -- same as above but with production settings
-gulp.task('build', gulp.series('clean', 'assets', 'generator', 'html', 'xml'));
+gulp.task('build', gulp.series('clean', 'assets', 'generate', 'html', 'xml'));
 
 // 'gulp check' -- checks site for errors
 gulp.task('check', gulp.series('site:check'));

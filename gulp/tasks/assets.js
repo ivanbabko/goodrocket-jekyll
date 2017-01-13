@@ -24,8 +24,8 @@ var when         = require('gulp-if');
 // include paths file
 var paths        = require('../paths');
 
-// 'gulp scripts' -- creates a index.js file with Sourcemap from our JavaScript files.
-// 'gulp scripts --prod' -- creates a index.js file from our JavaScript files,
+// 'gulp scripts' -- creates a script.js file with Sourcemap from our JavaScript files.
+// 'gulp scripts --prod' -- creates a script.js file from our JavaScript files,
 // minifies, gzips and cache busts it. Does not create a Sourcemap
 gulp.task('scripts', () =>
   // NOTE: The order here is important since it's concatenated in order from
@@ -35,9 +35,9 @@ gulp.task('scripts', () =>
     paths.jsFiles + '/plugins/**/*.js',
     paths.jsFiles + '/components/**/*.js'
   ])
-    .pipe(newer(paths.jsFilesTemp + '/index.js', {dest: paths.jsFilesTemp, ext: '.js'}))
+    .pipe(newer(paths.jsFilesTemp + '/script.js', {dest: paths.jsFilesTemp, ext: '.js'}))
     .pipe(when(!argv.prod, sourcemaps.init()))
-    .pipe(concat('index.js'))
+    .pipe(concat('script.js'))
     .pipe(size({
       showFiles: true
     }))
@@ -57,13 +57,13 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest(paths.jsFilesTemp))
 );
 
-// 'gulp styles' -- creates a index.css file from partials imported in index.scss, 
+// 'gulp styles' -- creates a style.css file from partials imported in style.scss,
 // groups media queries, adds prefixes, and creates a Sourcemap.
-// 'gulp styles --prod' -- creates a index.css file from partials imported in 
-// index.scss, groups media queries, adds prefixes, gzips and cache busts. 
+// 'gulp styles --prod' -- creates a style.css file from partials imported in
+// style.scss, groups media queries, adds prefixes, gzips and cache busts.
 // Does not create a Sourcemap.
 gulp.task('styles', () =>
-  gulp.src(paths.sassFiles + '/index.scss')
+  gulp.src(paths.sassFiles + '/style.scss')
     .pipe(when(!argv.prod, sourcemaps.init()))
     .pipe(sassGlob())
     .pipe(sass({
@@ -94,23 +94,24 @@ gulp.task('styles', () =>
 );
 
 
-// 'gulp icons' -- minifies SVG files, adds 'icon-' prefix to each file name, 
-// combines all SVG files into one, generates symbols <symbol id="filename">, 
-// removes the inline fill attribute, copies the SVG sprite from source to 
-// temporary assets directory
+// 'gulp icons' -- minifies SVG files, adds 'icon-' prefix to each file name,
+// combines all SVG files into icons.svg, there it generates symbols
+// <symbol id="filename">, removes the inline fill attribute, copies the SVG
+// sprite from source to temporary assets directory
 gulp.task('icons', function() {
   return gulp.src(paths.iconFiles + '/**/*.svg')
     .pipe(svgmin())
     //.pipe(rename({prefix: 'icon-'}))
-    .pipe(svgstore({fileName: 'icons.svg', inlineSvg: false}))
+    .pipe(svgstore({fileName: 'icons.svg', inlineSvg: true}))
     .pipe(cheerio({
       run: function ($, file) {
+       $('svg').attr('style', 'display:none');
        $('[fill]').removeAttr('fill');
       },
       parserOptions: { xmlMode: true }
     }))
     .pipe(size({showFiles: true}))
-    .pipe(gulp.dest(paths.assetFilesTemp));
+    .pipe(gulp.dest(paths.sourceDir + paths.includesFolderName));
 });
 
 
@@ -129,7 +130,7 @@ function reload(done) {
 }
 
 
-// 'gulp serve' -- open site in browser and watch for changes in source files 
+// 'gulp serve' -- open site in browser and watch for changes in source files
 // and update them when needed
 gulp.task('serve', (done) => {
   browserSync.init({
@@ -143,10 +144,10 @@ gulp.task('serve', (done) => {
   });
   done();
   // watch various files for changes, run necessary tasks, and reload the browser
-  gulp.watch([paths.mdFilesGlob, paths.htmlFilesGlob, paths.ymlFilesGlob, paths.xmlFilesGlob], gulp.series('clean:tmp', 'generator', reload));
+  gulp.watch([paths.mdFilesGlob, paths.htmlFilesGlob, paths.ymlFilesGlob, paths.xmlFilesGlob], gulp.series('clean:tmp', 'generate', reload));
   gulp.watch([paths.txtFilesGlob], gulp.series('site', reload));
   gulp.watch(paths.jsFilesGlob, gulp.series('scripts', reload));
   gulp.watch(paths.sassFilesGlob, gulp.series('styles'));
-  gulp.watch(paths.iconFilesGlob, gulp.series('icons', reload));
+  gulp.watch(paths.iconFilesGlob, gulp.series('icons', 'generate', reload));
   gulp.watch(paths.imageFilesGlob, gulp.series('images', 'images:feature', reload));
 });

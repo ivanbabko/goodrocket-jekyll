@@ -4,7 +4,7 @@ title:          "Sample post"
 description:    "Sample post for markdown reference"
 categories:     ["samples"]
 tags:           ["sample", "test"]
-classes:        post
+classes:        ["post"]
 ---
 
 The first paragraph of your post is used as an excerpt.

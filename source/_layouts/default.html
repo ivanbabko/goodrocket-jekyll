@@ -13,6 +13,8 @@
 
 <body class="{% if page.classes %}{{ page.classes | join: ' ' | prepend: ' ' }}{% endif %}">
 
+{% include icons.svg %}
+
 {{ content }}
 
 <script src="<!-- inject:js --><!-- endinject -->"></script>

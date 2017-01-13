@@ -16,7 +16,7 @@ paths.fontFolderName     = 'fonts';
 paths.layoutsFolderName  = '_layouts';
 paths.includesFolderName = '_includes';
 
-paths.prodUrl            = 'https://domain.com';
+paths.prodUrl            = 'http://domain.com';
 
 
 // Directory locations.
