@@ -4,14 +4,17 @@ Web development boilerplate based on Jekyll and Gulp.
 
 ## Features
 
-- Generate your site using file-based CMS [Jekyll](https://github.com/jekyll/jekyll) (so no databases and stuff). This includes automated Atom feed and sitemap generation.
-- Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, group media queries, minify, hash, and gzip).
+- Generate your site using file-based CMS [Jekyll](https://github.com/jekyll/jekyll) 
+(so no databases and stuff). This includes automated Atom feed and sitemap generation.
+- Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, 
+  group media queries, minify, hash, and gzip).
 - Build `script.js` (concatenate, create source maps, minify, hash, and gzip)
 - Optimize images using lossless algorythm to reduce file size.
 - Optimize and resize `feature` images (i.e. big heavy graphics and photos) to specified widths.
 - Optimize, combine, and inline the SVG icon set.
 - Minify, hash, and gzip built HTML files.
-- Locally serve site with Browser Sync which will instantly reload connected browsers on source files change.
+- Locally serve site with Browser Sync which will instantly reload connected browsers on source 
+  files change.
 - Deploy site to production via Amazon S3.
 - Submit XML sitemap to Google so their bots have a nudge to crawl your site.
 
@@ -49,8 +52,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 ├── gulpfile.js             # => Main Gulp tasks
 ├── package.json            # => Node dependencies list for NPM
 ├── aws-credentials.json    # => Credentials for deploying to Amazon S3
-├── setup                   # => Handy shell script to install dependencies
-├── ...
+└── setup                   # => Handy shell script to install dependencies on Mac OS
 ```
 
 ## Dependencies:
@@ -58,7 +60,9 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
 - **Jekyll**: >3.3.1
-- **Gulp**: >4.0. Note: If you are currently on pre-4.0 version, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) for installation instructions.
+- **Gulp**: >4.0. Note: If you are currently on pre-4.0 version, refer to 
+  [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) for 
+  installation instructions.
 - **GraphicsMagick**. We'll need it to automate image resizing.
 
 ### Jekyll Plugins Used
@@ -75,7 +79,10 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 3. **Step 3:** Install [Node.js](https://nodejs.org/en/) and run `npm install`.
 
-4. **Step 4:** Install **GraphicsMagick**. On Mac OS, use Homebrew `brew install graphicsmagick`. On Windows, [Download](http://www.graphicsmagick.org/download.html/) and Install, be sure that "Update executable search path" is checked during installation.
+4. **Step 4:** Install **GraphicsMagick**. On Mac OS, use Homebrew `brew install graphicsmagick`. 
+   On Windows, [Download](http://www.graphicsmagick.org/download.html/) and Install, be sure that 
+   "Update executable search path" is checked during installation. On Ubuntu, do 
+   `apt-get install graphicsmagick`.
 
 5. **Step 5:** Run `gulp` and open `http://localhost:4000` in your browser to be served.
 
@@ -123,8 +130,18 @@ not delete images from `.tmp` to reduce the time to build the site due to image 
 
 This will delete everything from `.tmp` directory as well as in `build` (images, assets, generated Jekyll site). 
 
-## Why Goodrocket? 
-Because a good rocket will take you high up to the sky really fast. And it won't explode in the process. I thought this was a good metaphor for a web development boilerplate that focuses on performance for the user and for you as a developer.
+## Frequently Asked Questions
+
+**So why Goodrocket?** 
+Because a good rocket will take you high up to the sky really fast. And it won't explode in the process. 
+I thought this was a good metaphor for a web development boilerplate that focuses on performance for the 
+user and for you as a developer.
+
+**Why another boilerplate?**
+Two reasons. First, I wanted to learn how Gulp works. Second, I find it hard to use other people's 
+boilerplates "as is". I have to understand fully what is under the hood to trust the system, and when 
+I figure things out, I start disagreeing and customizing. So I figured I'll just create my own 
+opinionated starting kit and find peace.   
 
 ---
 
