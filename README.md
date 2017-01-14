@@ -55,7 +55,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
 - **Jekyll**: >3.3.1
-- **Gulp**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [How to install Gulp 4 before it's officially released](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html)
+- **Gulp**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html)
 - **GraphicsMagick** will be used by Gulp for resizing images to be served responsively.
 
 ### Jekyll Plugins Used
@@ -66,7 +66,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 ## Setup
 
-If you're on Mac OS, I recommend using my setup shell script.
+If you're on Mac OS, I recommend using my setup shell script. You can launch it from your terminal app like this:
 
 ```
 ./setup
@@ -103,7 +103,7 @@ create a BrowserSync session in your browser.
 ### `gulp deploy`
 
 When you're done developing and have built your site with either `gulp --prod`
-or `gulp build --prod` you can deploy your site to Amazon S3.
+or `gulp build --prod` you can deploy your site to Amazon S3. Don't forget to configure aws-credentials.json.
 
 ### `gulp clean`
 
@@ -125,4 +125,4 @@ Because a good rocket will take you high up to the sky really fast. And it won't
 
 - **[generator-jekyllized](https://github.com/sondr3/generator-jekyllized)** by [Sondre Nilsen](https://github.com/sondr3).
 - **[made-mistakes-jekyll](https://github.com/mmistakes/made-mistakes-jekyll)** by [Michael Rose](https://github.com/mmistakes).
-- **[jekyll-boilerplate](https://github.com/HugoGiraudel/jekyll-boilerplate)** by [Hugo Giraudel](https://github.com/HugoGiraudel).**
+- **[jekyll-boilerplate](https://github.com/HugoGiraudel/jekyll-boilerplate)** by [Hugo Giraudel](https://github.com/HugoGiraudel).
