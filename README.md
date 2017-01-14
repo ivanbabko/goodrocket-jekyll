@@ -38,7 +38,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 |  |  ├── css
 |  |  |   ├── ...
 |  |  |   └── style.scss    # => CSS manifest file with all @imports
-├── .editorconfig           # => help our IDEs apply editing rules
+├── .editorconfig           # => help our IDEs to apply editing rules
 ├── .gitignore              # => common Git ignore patterns
 ├── _config.dev.yml         # => Jekyll config overrides for local development
 ├── _config.yml             # => main Jekyll configuration file
@@ -54,14 +54,14 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
-- **Jekyll**: >3.3.1
-- **Gulp**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
-- **GraphicsMagick** will be used by Gulp for resizing images to be served responsively.
+- **[Jekyll](https://github.com/jekyll/jekyll)**: >3.3.1
+- **[Gulp](https://github.com/gulpjs/gulp)**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
+- **[GraphicsMagick](https://www.npmjs.com/package/gm)** for image resizing.
 
 ### Jekyll Plugins Used
 
 * [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
-* [jekyll Seo Tag](https://github.com/jekyll/jekyll-seo-tag)
+* [Jekyll Seo Tag](https://github.com/jekyll/jekyll-seo-tag)
 * [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
 
 ## Setup
@@ -85,7 +85,7 @@ You can edit or look at any of them to see how they actually work.
 
 This is the default command, and probably the one you'll use the most. This
 command will build your assets and site with development settings. You'll get
-sourcemaps, your drafts will be generated. As you are changing your posts, pages and assets they will automatically update and inject into your browser via [BrowserSync][browsersync].
+sourcemaps, your drafts will be generated. As you are changing your posts, pages and assets they will automatically update and inject into your browser via BrowserSync.
 
 > `gulp --prod`
 
