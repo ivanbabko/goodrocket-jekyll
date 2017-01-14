@@ -4,19 +4,19 @@ Opinionated web development boilerplate based on Jekyll and Gulp.
 
 ## Features
 
-- Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, group media queries, minify, hash, and gzip)
+- Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, group media queries, minify, hash, and gzip).
 - Build `script.js` (concatenate, create source maps, minify, hash, and gzip)
-- Optimize images using lossless algorythm to reduce file size
-- Optimize and resize `feature` images (i.e. big heavy graphics and photos) to specified widths
-- Optimize, combine, and inline the SVG icon set
-- Minify, hash, and gzip built HTML files
-- Locally serve site with Browser Sync which will instantly reload connected browsers on source files change
-- Deploy site to production via Amazon S3
-- Submit XML sitemap to Google & Bing
+- Optimize images using lossless algorythm to reduce file size.
+- Optimize and resize `feature` images (i.e. big heavy graphics and photos) to specified widths.
+- Optimize, combine, and inline the SVG icon set.
+- Minify, hash, and gzip built HTML files.
+- Locally serve site with Browser Sync which will instantly reload connected browsers on source files change.
+- Deploy site to production via Amazon S3.
+- Submit XML sitemap to Google & Bing.
 
 ## Project structure
 
-If you'd like to modify default structure, edit paths in `gulpfile.js` and `_config.yml`
+If you'd like to modify default structure, edit paths in `gulpfile.js` and `_config.yml`.
 
 ```bash
 ├── gulp                    # => gulp tasks for building the entire site
@@ -55,7 +55,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
 - **Jekyll**: >3.3.1
-- **Gulp**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html)
+- **Gulp**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
 - **GraphicsMagick** will be used by Gulp for resizing images to be served responsively.
 
 ### Jekyll Plugins Used
