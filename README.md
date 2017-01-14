@@ -1,9 +1,10 @@
 # Goodrocket-Jekyll
 
-Opinionated web development boilerplate based on Jekyll and Gulp.
+Web development boilerplate based on Jekyll and Gulp. 
 
 ## Features
 
+- Generate your site using file-based CMS [Jekyll](https://github.com/jekyll/jekyll) (so no databases and stuff). This includes automated Atom feed and sitemap generation.
 - Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, group media queries, minify, hash, and gzip).
 - Build `script.js` (concatenate, create source maps, minify, hash, and gzip)
 - Optimize images using lossless algorythm to reduce file size.
@@ -12,7 +13,7 @@ Opinionated web development boilerplate based on Jekyll and Gulp.
 - Minify, hash, and gzip built HTML files.
 - Locally serve site with Browser Sync which will instantly reload connected browsers on source files change.
 - Deploy site to production via Amazon S3.
-- Submit XML sitemap to Google & Bing.
+- Submit XML sitemap to Google so their bots have a nudge to crawl your site.
 
 ## Project structure
 
@@ -29,19 +30,21 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 |  ├── _pages               # => Static pages like home, 404, etc.
 |  ├── _posts               # => Content in markdown format (post, articles, etc.)
 |  └── assets               # => Static assets
-|  |  ├── icons             # => Separate SVG files that will be sprited
+|  |  ├── icons             # => Separate SVG files that will be sprited and inlined
 |  |  ├── img               # => Image files
+|  |  |   ├── feature       # => Big images that will be resized by Gulp task
 |  |  ├── js                
 |  |  |   ├── components    # => Our Javascript code
 |  |  |   ├── plugins       # => jQuery plugins and 3rd party code snippets
 |  |  |   ├── vendor        # => Vendor libraries like jQuery, Modernizr, etc.
-|  |  ├── css
-|  |  |   ├── ...
-|  |  |   └── style.scss    # => CSS manifest file with all @imports
-├── .editorconfig           # => help our IDEs to apply editing rules
-├── .gitignore              # => common Git ignore patterns
+|  |  └── css
+|  |      ├── ...
+|  |      └── style.scss    # => CSS manifest file with all @imports
+|  └── robots.txt           # => Make bots behave
+├── .editorconfig           # => Config to help our IDEs apply consistent editing rules
+├── .gitignore              # => Common Git ignore patterns are included by default
 ├── _config.dev.yml         # => Jekyll config overrides for local development
-├── _config.yml             # => main Jekyll configuration file
+├── _config.yml             # => Main Jekyll configuration file
 ├── Gemfile                 # => Ruby dependencies list for Bundler
 ├── gulpfile.js             # => Main Gulp tasks
 ├── package.json            # => Node dependencies list for NPM
@@ -54,9 +57,9 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
-- **[Jekyll](https://github.com/jekyll/jekyll)**: >3.3.1
-- **[Gulp](https://github.com/gulpjs/gulp)**: >4.0. If you have pre 4.0 version of Gulp already installed, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
-- **[GraphicsMagick](https://www.npmjs.com/package/gm)** for image resizing.
+- **Jekyll**: >3.3.1
+- **Gulp**: >4.0. Note: If you are currently on pre-4.0 version, refer to [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) for installation instructions.
+- **GraphicsMagick**. We'll need it to automate image resizing.
 
 ### Jekyll Plugins Used
 
@@ -66,26 +69,31 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 ## Setup
 
-If you're on Mac OS, I recommend using my setup shell script. You can launch it from your terminal app like this:
+1. **Step 1:** Clone or download this repo and `cd` to it in your terminal application.
 
-```
-./setup
-```
+2. **Step 2:** Install [Bundler](http://bundler.io/) and run `bundle install`.
 
-Alternatively, check the script contents and follow the steps manually.
+3. **Step 3:** Install [Node.js](https://nodejs.org/en/) and run `npm install`.
 
+4. **Step 4:** Install **GraphicsMagick**. On Mac OS, use Homebrew `brew install graphicsmagick`. On Windows, [Download](http://www.graphicsmagick.org/download.html/) and Install, be sure that "Update executable search path" is checked during installation.
+
+5. **Step 5:** Run `gulp` and open `http://localhost:4000` in your browser to be served.
+
+**NOTE**: If you're on Mac OS, I recommend using included shell script that automates 
+the steps outlined above. Just type `./setup` in your Terminal app.
 
 ## Usage
 
 Below you'll find main Gulp commands. They are based on multiple subtasks which 
-live in their own files in the gulp directory and are named after what they do. 
-You can edit or look at any of them to see how they actually work.
+live in their own files in the gulp folder. They are named after what they do
+and are commented, so it should be easy to customize them. 
 
-### `gulp`
+### `gulp [--prod]`
 
-This is the default command, and probably the one you'll use the most. This
-command will build your assets and site with development settings. You'll get
-sourcemaps, your drafts will be generated. As you are changing your posts, pages and assets they will automatically update and inject into your browser via BrowserSync.
+This is the default command, and probably the one you'll use the most. It builds 
+your assets and site with development settings. You'll get sourcemaps, your drafts
+will be generated. As you are changing your posts, pages and assets they will 
+automatically update and inject into your browser via BrowserSync.
 
 > `gulp --prod`
 
@@ -103,21 +111,20 @@ create a BrowserSync session in your browser.
 ### `gulp deploy`
 
 When you're done developing and have built your site with either `gulp --prod`
-or `gulp build --prod` you can deploy your site to Amazon S3. Don't forget to configure aws-credentials.json.
+or `gulp build --prod` you can deploy your site to Amazon S3. Don't forget to configure 
+aws-credentials.json.
 
 ### `gulp clean`
 
-Deletes your assets from their `.tmp` directory as well as in `build` and deletes
-any gzipped files. **NOTE:** Does not delete your images from `.tmp` to reduce
-the time to build your site due to image optimizations.
+Deletes your assets from their `.tmp` directory as well as in `build`. **NOTE:** Does 
+not delete images from `.tmp` to reduce the time to build the site due to image optimizations.
 
 ### `gulp wipe`
 
-This will delete everything from `.tmp` directory as well as in `build` 
-(images, assets, generated Jekyll site). 
+This will delete everything from `.tmp` directory as well as in `build` (images, assets, generated Jekyll site). 
 
-## OK cool, but why Goodrocket? 
-Because a good rocket will take you high up to the sky really fast. And it won't explode in the process. I thought this was a good metaphor for a robust webdev boilerplate with focus on user and developer performance.
+## Why Goodrocket? 
+Because a good rocket will take you high up to the sky really fast. And it won't explode in the process. I thought this was a good metaphor for a web development boilerplate that focuses on performance for the user and for you as a developer.
 
 ---
 
