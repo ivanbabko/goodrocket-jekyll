@@ -95,7 +95,7 @@ Below you'll find main Gulp commands. They are based on multiple subtasks which
 live in their own files in the gulp folder. They are named after what they do
 and are commented, so it should be easy to customize them. 
 
-### `gulp [--prod]`
+#### `gulp [--prod]`
 
 This is the default command, and probably the one you'll use the most. It builds 
 your assets and site with development settings. You'll get sourcemaps, your drafts
@@ -110,23 +110,23 @@ JS and HTML will be minified and gzipped, plus the CSS and JS will be cache
 busted. The images will be compressed and Jekyll will generate a site with all
 your posts and no drafts.
 
-### `gulp build [--prod]`
+#### `gulp build [--prod]`
 
 This command is identical to the normal `gulp [--prod]` however it will not
 create a BrowserSync session in your browser.
 
-### `gulp deploy`
+#### `gulp deploy`
 
 When you're done developing and have built your site with either `gulp --prod`
 or `gulp build --prod` you can deploy your site to Amazon S3. Don't forget to configure 
 aws-credentials.json.
 
-### `gulp clean`
+#### `gulp clean`
 
 Deletes your assets from their `.tmp` directory as well as in `build`. **NOTE:** Does 
 not delete images from `.tmp` to reduce the time to build the site due to image optimizations.
 
-### `gulp wipe`
+#### `gulp wipe`
 
 This will delete everything from `.tmp` directory as well as in `build` (images, assets, generated Jekyll site). 
 
