@@ -1,6 +1,6 @@
 # Goodrocket-Jekyll
 
-Web development boilerplate based on Jekyll and Gulp. 
+Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane, so you can focus on solving user problems. 
 
 ## Features
 
@@ -133,15 +133,15 @@ This will delete everything from `.tmp` directory as well as in `build` (images,
 ## Frequently Asked Questions
 
 **So why Goodrocket?** 
-Because a good rocket will take you high up to the sky really fast. And it won't explode in the process. 
-I thought this was a good metaphor for a web development boilerplate that focuses on performance for the 
-user and for you as a developer.
+Because a good rocket will take you really far really fast. And it won't explode in the process. 
+I thought this was a good metaphor for a reliable web development boilerplate that focuses on performance 
+for the user and for you as a developer.
 
 **Why another boilerplate?**
 Two reasons. First, I wanted to learn how Gulp works. Second, I find it hard to use other people's 
 boilerplates "as is". I have to understand fully what is under the hood to trust the system, and when 
 I figure things out, I start disagreeing and customizing. So I figured I'll just create my own 
-opinionated starting kit and find peace.   
+opinionated starting kit and find peace.
 
 ---
 
