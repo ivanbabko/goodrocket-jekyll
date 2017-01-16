@@ -18,6 +18,10 @@ Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane,
 - Deploy site to production via Amazon S3.
 - Submit XML sitemap to Google so their bots have a nudge to crawl your site.
 
+## Coming soon
+- *Base workflow for your living styleguide / component library.*
+- *Stylelint and UnCSS integrated into the build process.* 
+
 ## Project structure
 
 If you'd like to modify default structure, edit paths in `gulpfile.js` and `_config.yml`.
