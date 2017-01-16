@@ -19,7 +19,7 @@ Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane,
 - Submit XML sitemap to Google so their bots have a nudge to crawl your site.
 
 ## Coming soon
-- *Base workflow for your living styleguide / component library.*
+- *Base for your living styleguide / component library.*
 - *Stylelint and UnCSS integrated into the build process.* 
 
 ## Project structure
