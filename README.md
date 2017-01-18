@@ -77,7 +77,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 ## Setup
 
-1. **Step 1:** Clone or download this repo and `cd` to it in your terminal application.
+1. **Step 1:** Clone or download this repo and open it in your command line tool of choice.
 
 2. **Step 2:** Install [Bundler](http://bundler.io/) and run `bundle install`.
 
