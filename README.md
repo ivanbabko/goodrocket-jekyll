@@ -31,11 +31,11 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 ├── build                   # => built site and assets
 ├── source                  # => source Jekyll files and assets
 |  ├── _data                # => JSON, XML, YML, or CSV data
-|  ├── _drafts              # => Draft content (not processed in production)
+|  ├── _drafts              # => Draft content (ignored in production mode)
 |  ├── _includes            # => Components and partials written in Liquid/HTML
 |  ├── _layouts             # => Page templates written in Liquid/HTML
-|  ├── _pages               # => Static pages like home, 404, etc.
-|  ├── _posts               # => Content in markdown format (post, articles, etc.)
+|  ├── _pages               # => Static pages like 404.
+|  ├── _posts               # => Content in markdown format (posts, articles, etc.)
 |  └── assets               # => Static assets
 |  |  ├── icons             # => Separate SVG files that will be sprited and inlined
 |  |  ├── img               # => Image files
@@ -43,7 +43,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 |  |  ├── js                
 |  |  |   ├── components    # => Our Javascript code
 |  |  |   ├── plugins       # => jQuery plugins and 3rd party code snippets
-|  |  |   ├── vendor        # => Vendor libraries like jQuery, Modernizr, etc.
+|  |  |   ├── vendor        # => Vendor libraries like jQuery, Modernizr, CoffeeScript, etc.
 |  |  └── css
 |  |      ├── ...
 |  |      └── style.scss    # => CSS manifest file with all @imports
@@ -56,7 +56,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 ├── gulpfile.js             # => Main Gulp tasks
 ├── package.json            # => Node dependencies list for NPM
 ├── aws-credentials.json    # => Credentials for deploying to Amazon S3
-└── setup                   # => Handy shell script to install dependencies on Mac OS
+└── setup                   # => Handy shell script to automate initial setup on Mac OS
 ```
 
 ## Dependencies:
@@ -140,6 +140,9 @@ This will delete everything from `.tmp` directory as well as in `build` (images,
 Because a good rocket will take you really far really fast. And it won't explode in the process. 
 I thought this was a good metaphor for a reliable web development boilerplate that focuses on performance 
 for the user and for you as a developer.
+
+Hint: there is a sister project [Goodrocket CSS](https://github.com/ivanbabko/goodrocket-css). 
+It is a Sass-powered, mobile first, modular CSS bolierplate. Check it out.
 
 **Why another boilerplate?**
 Two reasons. First, I wanted to learn how Gulp works. Second, I find it hard to use other people's 
