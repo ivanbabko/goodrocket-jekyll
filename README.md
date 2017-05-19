@@ -10,7 +10,7 @@ Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane,
   group media queries, minify, hash, and gzip).
 - Build `script.js` (concatenate, create source maps, minify, hash, and gzip)
 - Optimize images using lossless algorythm to reduce file size.
-- Optimize and resize `feature` images (i.e. big heavy graphics and photos) to specified widths.
+- Optimize and resize `feature` images (i.e. big heavy graphics and photos) to be served responsively.
 - Optimize, combine, and inline the SVG icon set.
 - Minify, hash, and gzip built HTML files.
 - Locally serve site with Browser Sync which will instantly reload connected browsers on source 
