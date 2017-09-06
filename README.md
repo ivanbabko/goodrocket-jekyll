@@ -1,6 +1,6 @@
 # Goodrocket-Jekyll
 
-Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane, so you can focus on solving user problems. 
+Web development boilerplate based on Jekyll and Gulp with focus on performance for the user and for you as a developer. Takes care of the mundane, so you can focus on building great UI. 
 
 ## Features
 
@@ -17,10 +17,6 @@ Web development boilerplate based on Jekyll and Gulp. Takes care of the mundane,
   files change.
 - Deploy site to production via Amazon S3.
 - Submit XML sitemap to Google so their bots have a nudge to crawl your site.
-
-## Coming soon
-- *Base for your living styleguide / component library.*
-- *Stylelint and UnCSS integrated into the build process.* 
 
 ## Project structure
 
