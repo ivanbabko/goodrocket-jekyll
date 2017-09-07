@@ -33,7 +33,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 |  ├── _pages               # => Static pages like 404.
 |  ├── _posts               # => Content in markdown format (posts, articles, etc.)
 |  └── assets               # => Static assets
-|  |  ├── icons             # => Separate SVG files that will be sprited and inlined automatically
+|  |  ├── icons             # => Separate SVG files (will be sprited and inlined in build process)
 |  |  ├── img               # => Image files
 |  |  |   ├── feature       # => Big images that will be resized by Gulp task
 |  |  ├── js                
