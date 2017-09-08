@@ -26,7 +26,7 @@ var paths        = require('../paths');
 
 // 'gulp scripts' -- creates a script.js file with Sourcemap from our JavaScript files.
 // 'gulp scripts --prod' -- creates a script.js file from our JavaScript files,
-// minifies, gzips and cache busts it. Does not create a Sourcemap
+// minifies, and cache busts it. Does not create a Sourcemap
 gulp.task('scripts', () =>
   // NOTE: The order here is important since it's concatenated in order from
   // top to bottom, so you want vendor scripts etc on top
@@ -37,61 +37,106 @@ gulp.task('scripts', () =>
   ])
     .pipe(newer(paths.jsFilesTemp + '/script.js', {dest: paths.jsFilesTemp, ext: '.js'}))
     .pipe(when(!argv.prod, sourcemaps.init()))
+
+     // Concatenate scripts
     .pipe(concat('script.js'))
-    .pipe(size({
-      showFiles: true
-    }))
-    .pipe(when(argv.prod, rename({suffix: '.min'})))
-    .pipe(when(argv.prod, when('*.js', uglify())))
-    .pipe(when(argv.prod, size({
-      showFiles: true
-    })))
-    .pipe(when(argv.prod, rev()))
+    .pipe(size({showFiles: true}))
+
+    // Minify JS for production
+    .pipe(when(argv.prod, when('*.js', uglify({preserveComments: 'some'}))))
+    .pipe(when(argv.prod, size({showFiles: true})))
+
+    // Output sourcemap for development
     .pipe(when(!argv.prod, sourcemaps.write('.')))
+    .pipe(when(!argv.prod, gulp.dest(paths.jsFilesTemp)))
+
+    // Hash JS for production
+    .pipe(when(argv.prod, rev()))
+
+    // Output hashed files
     .pipe(when(argv.prod, gulp.dest(paths.jsFilesTemp)))
-    .pipe(when(argv.prod, when('*.js', gzip({append: true}))))
+);
+
+
+// 'gulp scripts:gzip --prod' -- gzips JS
+gulp.task('scripts:gzip', () => {
+  return gulp.src([paths.jsFilesTemp + '/*.js'])
+  .pipe(when(argv.prod, when('*.js', gzip({append: true}))))
     .pipe(when(argv.prod, size({
       gzip: true,
       showFiles: true
     })))
-    .pipe(gulp.dest(paths.jsFilesTemp))
-);
+    .pipe(when(argv.prod, gulp.dest(paths.jsFilesTemp)))
+});
+
+
 
 // 'gulp styles' -- creates a style.css file from partials imported in style.scss,
 // groups media queries, adds prefixes, and creates a Sourcemap.
 // 'gulp styles --prod' -- creates a style.css file from partials imported in
-// style.scss, groups media queries, adds prefixes, gzips and cache busts.
-// Does not create a Sourcemap.
+// style.scss, groups media queries, adds prefixes, minifies and casche busts, but
+// does not create a Sourcemap.
 gulp.task('styles', () =>
   gulp.src(paths.sassFiles + '/style.scss')
     .pipe(when(!argv.prod, sourcemaps.init()))
+
+    // Glob partials into single file
     .pipe(sassGlob())
-    .pipe(sass({
-      precision: 10
-    }).on('error', sass.logError))
+
+    // Preprocess SASS
+    .pipe(sass({precision: 10}).on('error', sass.logError))
+
+    // Add vendor prefixes
     .pipe(postcss([
       autoprefixer({browsers: ['last 2 versions', '> 5%', 'IE 9']})
     ]))
+
+    // Group media queries
     .pipe(gcmq())
-    .pipe(size({
-      showFiles: true
-    }))
-    .pipe(when(argv.prod, rename({suffix: '.min'})))
+    .pipe(size({showFiles: true}))
+
+    // Minify CSS for production
     .pipe(when(argv.prod, when('*.css', cssnano({autoprefixer: false}))))
-    .pipe(when(argv.prod, size({
-      showFiles: true
-    })))
-    .pipe(when(argv.prod, rev()))
+    .pipe(when(argv.prod, size({showFiles: true})))
+
+    // Output sourcemap for development
     .pipe(when(!argv.prod, sourcemaps.write('.')))
-    .pipe(when(argv.prod, gulp.dest(paths.sassFilesTemp)))
-    .pipe(when(argv.prod, when('*.css', gzip({append: true}))))
-    .pipe(when(argv.prod, size({
-      gzip: true,
-      showFiles: true
-    })))
+
+    // Hash CSS for production
+    .pipe(when(argv.prod, rev()))
+    .pipe(when(argv.prod, size({showFiles: true})))
+
+    // Output hashed files
     .pipe(gulp.dest(paths.sassFilesTemp))
+
     .pipe(when(!argv.prod, browserSync.stream()))
 );
+
+
+// 'gulp styles:uncss' -- removes unused CSS
+gulp.task('styles:uncss', () => {
+  return gulp.src([paths.sassFilesTemp + '/*.css'])
+      .pipe(uncss({
+          html: ['build/**/*.html'],
+          ignore: [
+            new RegExp('^meta\..*'),
+            new RegExp('^\.is-.*')
+          ]
+       }))
+      .pipe(gulp.dest(paths.sassFilesTemp))
+});
+
+
+// 'gulp styles:gzip --prod' -- gzips CSS
+gulp.task('styles:gzip', () => {
+  return gulp.src([paths.sassFilesTemp + '/*.css'])
+    .pipe(when(argv.prod, when('*.css', gzip({append: true}))))
+      .pipe(when(argv.prod, size({
+        gzip: true,
+        showFiles: true
+      })))
+      .pipe(when(argv.prod, gulp.dest(paths.sassFilesTemp)))
+});
 
 
 // 'gulp icons' -- minifies SVG files, adds 'icon-' prefix to each file name,
@@ -135,7 +180,7 @@ function reload(done) {
 gulp.task('serve', (done) => {
   browserSync.init({
     // tunnel: true,
-    open: true,
+    open: false,
     port: 4000, // change port to match default Jekyll
     ui: {
       port: 4001

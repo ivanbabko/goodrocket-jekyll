@@ -10,9 +10,9 @@ var when       = require('gulp-if');
 // include paths file
 var paths      = require('../paths');
 
-// 'gulp html' -- does nothing
-// 'gulp html --prod' -- minifies and gzips HTML files for production
-gulp.task('html', () =>
+// 'gulp html:gzip' -- does nothing
+// 'gulp html:gzip --prod' -- minifies and gzips HTML files for production
+gulp.task('html:gzip', () =>
   gulp.src(paths.siteFolderName + paths.htmlPattern)
     .pipe(when(argv.prod, htmlmin({
       removeComments: true,
@@ -33,9 +33,9 @@ gulp.task('html', () =>
     .pipe(when(argv.prod, gulp.dest(paths.siteFolderName)))
 );
 
-// 'gulp xml' -- does nothing
-// 'gulp xml' --prod'  -- minifies XML and JSON files for production
-gulp.task('xml', () =>
+// 'gulp xml:gzip' -- does nothing
+// 'gulp xml:gzip' --prod'  -- minifies XML and JSON files for production
+gulp.task('xml:gzip', () =>
   gulp.src(paths.siteFolderName + paths.xmlPattern)
     .pipe(when(argv.prod, prettyData({
       type: 'minify',

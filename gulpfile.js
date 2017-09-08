@@ -19,8 +19,8 @@ gulp.task('generate', gulp.series('copy:tmp', 'inject', 'site', 'copy:site'));
 // images, and copies assets folder to the actual build folder
 // 'gulp assets --prod' -- same as above but with production settings
 gulp.task('assets', gulp.series(
-  gulp.parallel('scripts', 'styles', 'fonts', 'icons'),
-  gulp.series('images:lazyload', 'images:feature', 'copy:assets')
+  gulp.series('scripts', 'styles', 'fonts', 'icons'),
+  gulp.series('scripts:gzip', 'styles:gzip', 'images:lazyload', 'images:feature', 'copy:assets')
 ));
 
 // 'gulp clean' -- removes temporary and built CSS/JS assets, deletes built site,
@@ -34,7 +34,7 @@ gulp.task('wipe', gulp.series('clean', 'clean:images'));
 
 // 'gulp build' -- same as 'gulp' but doesn't serve site
 // 'gulp build --prod' -- same as above but with production settings
-gulp.task('build', gulp.series('clean', 'assets', 'generate', 'html', 'xml'));
+gulp.task('build', gulp.series('clean', 'assets', 'generate', 'html:gzip', 'xml:gzip'));
 
 // 'gulp check' -- checks site for errors
 gulp.task('check', gulp.series('site:check'));
