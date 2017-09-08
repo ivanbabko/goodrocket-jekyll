@@ -135,7 +135,7 @@ function reload(done) {
 gulp.task('serve', (done) => {
   browserSync.init({
     // tunnel: true,
-    open: false,
+    open: true,
     port: 4000, // change port to match default Jekyll
     ui: {
       port: 4001
@@ -147,7 +147,7 @@ gulp.task('serve', (done) => {
   gulp.watch([paths.mdFilesGlob, paths.htmlFilesGlob, paths.ymlFilesGlob, paths.xmlFilesGlob], gulp.series('clean:tmp', 'generate', reload));
   gulp.watch([paths.txtFilesGlob], gulp.series('site', reload));
   gulp.watch(paths.jsFilesGlob, gulp.series('scripts', reload));
-  gulp.watch(paths.sassFilesGlob, gulp.series('styles'));
+  gulp.watch(paths.sassFilesGlob, gulp.series('styles', reload));
   gulp.watch(paths.iconFilesGlob, gulp.series('icons', 'generate', reload));
-  gulp.watch(paths.imageFilesGlob, gulp.series('images', 'images:feature', reload));
+  gulp.watch(paths.imageFilesGlob, gulp.series('images:lazyload', 'images:feature', reload));
 });
