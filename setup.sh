@@ -90,8 +90,8 @@ sudo npm install
 #
 # Install graphicsmagic via NPM to resize images qith Gulp
 #
-echo "* Installing graphicsmagick..."
-brew install graphicsmagick
+echo "* Installing node-gyp..."
+npm install -g node-gyp
 
 
 #

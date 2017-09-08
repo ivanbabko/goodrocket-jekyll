@@ -63,7 +63,6 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 - **Gulp**: >4.0. Note: If you are currently on pre-4.0 version, refer to 
   [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) for 
   installation instructions.
-- **GraphicsMagick**. We'll need it to automate image resizing.
 
 ### Jekyll Plugins Used
 
@@ -79,15 +78,12 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 3. **Step 3:** Install [Node.js](https://nodejs.org/en/) and run `npm install`.
 
-4. **Step 4:** Install **GraphicsMagick**. On Mac OS, use Homebrew `brew install graphicsmagick`. 
-   On Windows, [Download](http://www.graphicsmagick.org/download.html/) and Install, be sure that 
-   "Update executable search path" is checked during installation. On Ubuntu, do 
-   `apt-get install graphicsmagick`.
+4. **Step 4:** Install [node-gyp](https://github.com/nodejs/node-gyp#installation)
 
-5. **Step 5:** Run `gulp` and open `http://localhost:4000` in your browser to be served.
+5. **Step 5:** Run `gulp` and open `http://localhost:4000` in your browser.
 
-**NOTE**: If you're on Mac OS, I recommend using included shell script that automates 
-the steps outlined above. Just type `./setup` in your Terminal app.
+**NOTE**: If you're on Mac OS, there is a shell script included which automates 
+the setup. Just type `./setup.sh` in your Terminal app.
 
 ## Usage
 

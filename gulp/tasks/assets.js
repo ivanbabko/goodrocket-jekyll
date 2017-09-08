@@ -20,6 +20,7 @@ var svgmin       = require('gulp-svgmin');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var when         = require('gulp-if');
+var uncss        = require('gulp-uncss');
 
 // include paths file
 var paths        = require('../paths');
