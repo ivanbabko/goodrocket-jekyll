@@ -91,7 +91,7 @@ sudo npm install
 # Install graphicsmagic via NPM to resize images qith Gulp
 #
 echo "* Installing node-gyp..."
-npm install -g node-gyp
+sudo npm install -g node-gyp
 
 
 #
