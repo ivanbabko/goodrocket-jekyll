@@ -52,7 +52,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 ├── gulpfile.js             # => Main Gulp tasks
 ├── package.json            # => Node dependencies list for NPM
 ├── aws-credentials.json    # => Credentials for deploying to Amazon S3
-└── setup                   # => Handy shell script to automate initial setup on Mac OS
+└── setup.sh                # => Handy shell script to automate initial setup on Mac OS
 ```
 
 ## Dependencies:
