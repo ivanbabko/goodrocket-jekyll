@@ -59,7 +59,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 
 - **Ruby**: >2.0 with Bundler >1.10
 - **Node**: >4.2 with NPM >3.10
-- **Jekyll**: >3.5.2
+- **Jekyll**: >3.7.3
 - **Gulp**: >4.0. Note: If you are currently on pre-4.0 version, refer to 
   [this article](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) for 
   installation instructions.
