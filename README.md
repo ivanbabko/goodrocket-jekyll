@@ -35,7 +35,7 @@ If you'd like to modify default structure, edit paths in `gulpfile.js` and `_con
 |  └── assets               # => Static assets
 |  |  ├── icons             # => Separate SVG files (will be sprited and inlined in build process)
 |  |  ├── img               # => Image files
-|  |  |   ├── feature       # => Big images that will be resized by Gulp task
+|  |  |   ├── resize        # => Images that will be resized by Gulp task
 |  |  ├── js                
 |  |  |   ├── components    # => Our Javascript code
 |  |  |   ├── plugins       # => jQuery plugins and 3rd party code snippets

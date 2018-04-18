@@ -20,7 +20,7 @@ gulp.task('generate', gulp.series('copy:tmp', 'inject', 'site', 'copy:site'));
 // 'gulp assets --prod' -- same as above but with production settings
 gulp.task('assets', gulp.series(
   gulp.series('scripts', 'styles', 'fonts', 'icons'),
-  gulp.series('scripts:gzip', 'styles:gzip', 'images:lazyload', 'images:feature', 'copy:assets')
+  gulp.series('scripts:gzip', 'styles:gzip', 'images:optimize', 'images:resize', 'copy:assets')
 ));
 
 // 'gulp clean' -- removes temporary and built CSS/JS assets, deletes built site,

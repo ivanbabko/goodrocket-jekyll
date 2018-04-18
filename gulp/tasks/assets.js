@@ -195,5 +195,5 @@ gulp.task('serve', (done) => {
   gulp.watch(paths.jsFilesGlob, gulp.series('scripts', reload));
   gulp.watch(paths.sassFilesGlob, gulp.series('styles', reload));
   gulp.watch(paths.iconFilesGlob, gulp.series('icons', 'generate', reload));
-  gulp.watch(paths.imageFilesGlob, gulp.series('images:lazyload', 'images:feature', reload));
+  gulp.watch(paths.imageFilesGlob, gulp.series('images:optimize', 'images:resize', reload));
 });

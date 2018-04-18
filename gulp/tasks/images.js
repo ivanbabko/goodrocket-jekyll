@@ -17,7 +17,7 @@ var paths       = require('../paths');
 
 // 'gulp images:optimize' -- optimize images
 gulp.task('images:optimize', () => {
-  return gulp.src([paths.imageFilesGlob, '!' + paths.imageFiles + '/{feature,feature/**,lazyload,lazyload/**}']) // do not process feature and lazyload images
+  return gulp.src([paths.imageFilesGlob, '!' + paths.imageFiles + '/{resize,resize/**}']) // exclude images that will be handled by 'images:resize' task
     .pipe(newer(paths.imageFilesSite))
     .pipe(imagemin([
       imagemin.gifsicle({interlaced: true}),
@@ -29,32 +29,9 @@ gulp.task('images:optimize', () => {
     .pipe(size({title: 'images'}))
 });
 
-// 'gulp images:lazyload' -- resize lazyload images
-gulp.task('images:lazyload', () => {
-  return gulp.src([paths.imageFiles + '/lazyload' + paths.imagePattern, '!' + paths.imageFiles + '/lazyload/**/*.{gif,svg}'])
-    .pipe(changed(paths.imageFilesSite))
-    .pipe(responsive({
-      // resize all images
-      '*.*': [{
-        width: 20,
-        rename: { suffix: '-lq' },
-      }, {
-        // copy original image
-        width: '100%',
-        rename: { suffix: '' },
-      }]
-    }, {
-      // global configuration for all images
-      errorOnEnlargement: false,
-      withMetadata: false,
-      errorOnUnusedConfig: false
-    }))
-    .pipe(gulp.dest(paths.imageFilesSite))
-});
-
-// 'gulp images:feature' -- resize feature images
-gulp.task('images:feature', () => {
-  return gulp.src([paths.imageFiles + '/feature' + paths.imagePattern, '!' + paths.imageFiles + '/feature/**/*.{gif,svg}'])
+// 'gulp images:resize' -- resize images
+gulp.task('images:resize', () => {
+  return gulp.src([paths.imageFiles + '/resize' + paths.imagePattern, '!' + paths.imageFiles + '/resize/**/*.{gif,svg}'])
     .pipe(changed(paths.imageFilesSite))
     .pipe(responsive({
       // resize all images
@@ -63,15 +40,19 @@ gulp.task('images:feature', () => {
         rename: { suffix: '-lq' },
       }, {
         width: 640,
-        rename: { suffix: '-640' },
+        rename: { suffix: '-s' },
       }, {
         width: 1024,
-        rename: { suffix: '-1024' },
+        rename: { suffix: '-m' },
       }, {
         width: 1280,
-        rename: { suffix: '-1280' },
+        rename: { suffix: '-l' },
       }, {
         width: 1920,
+        rename: { suffix: '-xl' },
+      }, {
+        // copy original image
+        width: '100%',
         rename: { suffix: '' },
       }]
     }, {
