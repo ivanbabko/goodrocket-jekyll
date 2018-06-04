@@ -2,6 +2,10 @@
 
 Web development boilerplate based on Jekyll and Gulp with focus on performance for the user and for you as a developer. Takes care of the mundane, so you can focus on building great UI. 
 
+<a href="https://github.com/ivanbabko/goodrocket-jekyll/archive/master.zip">
+  <img src=".hero.png" alt="Goodrocket CSS"/>
+</a>
+
 ## Features
 
 - Generate your site using file-based CMS [Jekyll](https://github.com/jekyll/jekyll) 
