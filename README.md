@@ -9,7 +9,7 @@ Web development boilerplate based on Jekyll and Gulp with focus on performance f
 ## Features
 
 - Generate your site using file-based CMS [Jekyll](https://github.com/jekyll/jekyll) 
-(so no databases and stuff). This includes automated Atom feed and sitemap generation.
+(so no databases and stuff).
 - Build `style.css` (preprocess SCSS, glob partials, create source maps, add vendor prefixes, 
   group media queries, minify, hash, and gzip).
 - Build `script.js` (concatenate, create source maps, minify, hash, and gzip)
